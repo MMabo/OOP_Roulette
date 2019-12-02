@@ -18,7 +18,7 @@ class Outcome:
         return hash(self.name)
 
     def __str__(self):
-        return "{0} ({1}:11)".format(name,odds) # name (odds:1)
+        return "{0} ({1}:11)".format(self.name,self.odds) # name (odds:1)
 
-    #def __repr__(self):
-        #return "{class_:s}({name!r}, {odds!r})".format(class_=type(self).__name__, **vars(self) )
+    def __repr__(self):
+        return "{class_:s}({name!r}, {odds!r})".format(class_=type(self).__name__, **vars(self) )
