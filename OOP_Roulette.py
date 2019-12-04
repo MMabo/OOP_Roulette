@@ -22,3 +22,8 @@ class Outcome:
 
     def __repr__(self):
         return "{class_:s}({name!r}, {odds!r})".format(class_=type(self).__name__, **vars(self) )
+
+class Bin(frozenset):
+    pass
+    
+class Wheel():
