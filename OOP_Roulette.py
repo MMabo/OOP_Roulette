@@ -1,3 +1,5 @@
+from random import randint
+
 class Outcome:
     def __init__(self, name, odds):
         self.name = name
@@ -24,6 +26,22 @@ class Outcome:
         return "{class_:s}({name!r}, {odds!r})".format(class_=type(self).__name__, **vars(self) )
 
 class Bin(frozenset):
-    pass
+    def __init__(self):
+        pass
     
-class Wheel():
+class Wheel:
+    def __init__(self):
+        self.bins = tuple( Bin() for i in range(38))
+        print(self.bins)
+        self.rng = randint(0,37)
+
+    def addOutcome(self,number,outcome):
+        self.bins[number] = outcome
+        print(self.bins)
+
+    def next():
+        pass
+
+    def get():
+        pass
+
