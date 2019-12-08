@@ -1,4 +1,5 @@
-from random import randint
+import random
+
 
 class Outcome:
     def __init__(self, name, odds):
@@ -6,13 +7,13 @@ class Outcome:
         self.odds = odds
 
     def winamount(self, amount):
-        return self.odds*amount
+        return self.odds * amount
 
     def __eq__(self, other):
         if self.name == other.name:
             return True
-        
-    def __ne__(self,other):
+
+    def __ne__(self, other):
         if self.name != other.name:
             return True
 
@@ -20,28 +21,29 @@ class Outcome:
         return hash(self.name)
 
     def __str__(self):
-        return "{0} ({1}:11)".format(self.name,self.odds) # name (odds:1)
+        return "{0} ({1}:11)".format(self.name, self.odds)  # name (odds:1)
 
     def __repr__(self):
-        return "{class_:s}({name!r}, {odds!r})".format(class_=type(self).__name__, **vars(self) )
+        #Exposes the class name as well as the attribute values.
+        return "{class_:s}({name!r}, {odds!r})".format(class_=type(self).__name__, **vars(self))
 
-class Bin(frozenset):
+
+class Bin(set):
     def __init__(self):
         pass
-    
+
+
 class Wheel:
     def __init__(self):
-        self.bins = tuple( Bin() for i in range(38))
-        print(self.bins)
-        self.rng = randint(0,37)
-
-    def addOutcome(self,number,outcome):
-        self.bins[number] = outcome
+        self.bins = tuple(Bin() for i in range(38))
         print(self.bins)
 
-    def next():
-        pass
+    def addOutcome(self, number, outcome):
+        self.bins[number].add(outcome)
+        print(self.bins)
 
-    def get():
-        pass
+    def next(self):
+        return random.choice(self.bins)
 
+    def get(self, number):
+        return self.bins[number]
